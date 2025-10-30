@@ -10,7 +10,7 @@ public class ItemCalculatorView extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("itemcalculator-view.fxml"));
         Scene scene = new Scene(loader.load());
-        stage.setTitle("Shopping Cart");
+        stage.setTitle("Shopping Cart (Taru Nipuli)");
         stage.setScene(scene);
         stage.show();
     }
