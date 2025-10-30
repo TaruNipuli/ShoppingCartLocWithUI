@@ -8,4 +8,6 @@ public class ItemCalculator {
     public double calculateCartTotal(double currentTotal, double newItemTotal) {
         return currentTotal + newItemTotal;
     }
+
+
 }
