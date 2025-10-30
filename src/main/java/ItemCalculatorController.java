@@ -22,6 +22,14 @@ public class ItemCalculatorController {
     private Button btnAddToCart;
     @FXML
     private Button btnResetCart;
+    @FXML
+    private Label lblLanguage;
+    @FXML
+    private Label lblQuantity;
+    @FXML
+    private Label lblPrice;
+
+
 
     private ItemCalculator calculator = new ItemCalculator();
     private double cartTotal = 0.0;
@@ -51,10 +59,15 @@ public class ItemCalculatorController {
     private void setLocale(String language, String country) {
         Locale locale = new Locale(language, country);
         rb = ResourceBundle.getBundle("MessagesBundle", locale);
-
-        // Käytetään olemassa olevia keyjä
-        lblItemTotal.setText(rb.getString("itemPrice") + ": ");
+        lblItemTotal.setText(rb.getString("itemTotalPrice") + ": ");
         lblCartTotal.setText(rb.getString("price") + ": ");
+        btnCalculate.setText(rb.getString("calculate"));
+        btnAddToCart.setText(rb.getString("addToCart"));
+        btnResetCart.setText(rb.getString("resetCart"));
+        lblLanguage.setText(rb.getString("language"));
+        lblQuantity.setText(rb.getString("quantity"));
+        lblPrice.setText(rb.getString("ItemPrice"));
+
     }
 
     private void calculateItemTotal() {
@@ -62,7 +75,7 @@ public class ItemCalculatorController {
             double price = Double.parseDouble(txtPrice.getText());
             int quantity = Integer.parseInt(txtQuantity.getText());
             double total = calculator.calculateItemTotal(price, quantity);
-            lblItemTotal.setText(rb.getString("itemPrice") + ": " + total);
+            lblItemTotal.setText(rb.getString("ItemPrice") + ": " + total);
         } catch (NumberFormatException e) {
             showAlert("Invalid input", "Please enter numeric values for price and quantity.");
         }
@@ -83,7 +96,7 @@ public class ItemCalculatorController {
     private void resetCart() {
         cartTotal = 0.0;
         lblCartTotal.setText(rb.getString("price") + ": " + cartTotal);
-        lblItemTotal.setText(rb.getString("itemPrice") + ": ");
+        lblItemTotal.setText(rb.getString("ItemPrice") + ": ");
         txtPrice.clear();
         txtQuantity.clear();
     }
